@@ -1,0 +1,86 @@
+Print Keypad Combinations Code
+Send Feedback
+Given an integer n, using phone keypad find out and print all the possible strings that can be made using digits of input n.
+Note : The order of strings are not important. Just print different strings in new lines.
+Input Format :
+Integer n
+Output Format :
+All possible strings in different lines
+Constraints :
+1 <= n <= 10^6
+Sample Input:
+23
+Sample Output:
+ad
+ae
+af
+bd
+be
+bf
+cd
+ce
+cf
+
+Main Code...............................................................................................!
+
+import java.util.Scanner;
+
+public class runner {
+	
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		int input = s.nextInt();
+		solution.printKeypad(input);
+	}
+}
+
+
+Class Code..............................................................................................!
+
+public class solution {
+    public static String get(int n){
+        if(n==2){
+            return "abc";
+        }
+        if(n==3){
+            return "def";
+        }
+        if(n==4){
+            return "ghi";
+        }
+        if(n==5){
+            return "jkl";
+        }
+        if(n==6){
+            return "mno";
+        }
+        if(n==7){
+            return "pqrs";
+        }
+        if(n==8){
+            return "tuv";
+        }
+        if(n==9){
+            return "wxyz";
+        }
+        return "";
+    }
+
+	public static void printKeypad(int input){
+		String output="";
+		 printKeypad(input,output);
+	}
+    public static void printKeypad(int n, String output){
+        if(n<=1){
+            System.out.println(output);
+            return;
+        }
+      // printKeypad(n/10);
+        String app=get(n%10);
+        // String codeforch[] = code[app];
+        for (int i=0; i< app.length(); i++){
+           char cho = app.charAt(i);
+            printKeypad(n/10,cho+output);
+        }
+    }
+}
